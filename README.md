@@ -41,33 +41,6 @@ make re
 make fclean
 ```
 
-## Project Structure
-
-```
-inception/
-├── Makefile
-├── secrets/                    # Password files (gitignored)
-│   ├── credentials.txt
-│   ├── db_password.txt
-│   └── db_root_password.txt
-└── srcs/
-    ├── docker-compose.yml     # Main compose file
-    ├── .env                   # Environment variables
-    └── requirements/
-        ├── mariadb/           # MariaDB container
-        │   ├── Dockerfile
-        │   ├── conf/mariadb.conf
-        │   └── tools/init_db.sh
-        ├── nginx/             # NGINX container
-        │   ├── Dockerfile
-        │   ├── conf/nginx.conf
-        │   └── tools/setup_ssl.sh
-        └── wordpress/         # WordPress container
-            ├── Dockerfile
-            ├── conf/php-fpm.conf
-            └── tools/setup_wp.sh
-```
-
 ## Services
 
 - **NGINX**: Reverse proxy with TLS (port 443)
@@ -99,12 +72,6 @@ docker ps
 ```bash
 docker-compose -f srcs/docker-compose.yml logs [service_name]
 ```
-
-### Test website access
-```bash
-curl -k https://ajabado.42.fr
-```
-
 ## Security Features
 
 - TLS 1.2/1.3 only
